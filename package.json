@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ensdomains/eth-ens-namehash": "^2.0.15",
     "@ensdomains/thorin": "0.6.28",
     "@next/font": "13.1.6",
     "@rainbow-me/rainbowkit": "^0.11.0",
@@ -18,6 +19,7 @@
     "@types/react-is": "^17.0.3",
     "@types/styled-components": "^5.1.26",
     "@wagmi/core": "^0.9.6",
+    "ethers": "^5.7.2",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
     "next": "12.1.6",
