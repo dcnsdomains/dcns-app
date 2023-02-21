@@ -41,10 +41,9 @@ export default function Page() {
   const router = useRouter()
 
   useEffect(() => {
-    if (currentChain?.id === 5 || currentChain?.id === 1337) {
+    if (currentChain?.id === 2000 || currentChain?.id === 568) {
       router.push('/')
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChain?.id])
 
   const handleChangeNetwork = () => {
