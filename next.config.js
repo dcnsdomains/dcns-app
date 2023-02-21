@@ -10,6 +10,14 @@ const nextConfig = {
   },
   // change to true once infinite loop is fixed
   swcMinify: false,
+  async rewrites() {
+    return [
+      {
+        source: '/:name/register',
+        destination: '/register?name=:name'
+      }
+    ]
+  },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.svg$/,
