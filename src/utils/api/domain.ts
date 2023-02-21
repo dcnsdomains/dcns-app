@@ -40,4 +40,5 @@ export default async function getDomain(
     networkId: provider._network.chainId,
     contractAddress,
   })
+  return metadata
 }
