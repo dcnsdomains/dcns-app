@@ -15,7 +15,7 @@ const nextConfig = {
       {
         source: '/:name/register',
         destination: '/register?name=:name'
-      }
+      },
     ]
   },
   webpack: (config, options) => {
