@@ -10,10 +10,6 @@ const nextConfig = {
   },
   // change to true once infinite loop is fixed
   swcMinify: false,
-  generateBuildId: () => {
-    const hash = execSync('git rev-parse HEAD').toString().trim()
-    return hash
-  },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.svg$/,
