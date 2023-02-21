@@ -67,9 +67,9 @@ export interface Transaction<Data> {
 
 export type EthAddress = string
 
-export type CurrencyUnit = 'eth' | 'fiat'
+export type CurrencyUnit = 'wDOGE' | 'fiat'
 export type FiatUnit = 'usd'
-export type CurrencyDisplay = 'eth' | FiatUnit
+export type CurrencyDisplay = 'wDOGE' | FiatUnit
 
 export type QuerySpace =
   | Space

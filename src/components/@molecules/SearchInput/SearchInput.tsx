@@ -310,7 +310,7 @@ export const SearchInput = ({
     if (selectedItem.type === 'nameWithDotEth') {
       selectedItem = {
         type: 'name',
-        value: `${normalisedName}.eth`,
+        value: `${normalisedName}.dc`,
       }
     }
     if (!selectedItem.value) {
@@ -318,7 +318,7 @@ export const SearchInput = ({
     }
     if (selectedItem.type === 'name') {
       const labels = selectedItem.value.split('.')
-      const isDotETH = labels.length === 2 && labels[1] === 'eth'
+      const isDotETH = labels.length === 2 && labels[1] === 'dc'
       if (isDotETH && labels[0].length < 3) {
         return
       }
