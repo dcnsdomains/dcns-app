@@ -14,7 +14,6 @@ import { useBreakpoint } from '@app/utils/BreakpointProvider'
 import ENSFull from '../assets/ENSFull.svg'
 import ENSWithGradient from '../assets/ENSWithGradient.svg'
 import BaseLink from './@atoms/BaseLink'
-import { HamburgerMenu } from './@atoms/HamburgerMenu'
 import { RouteItem } from './@atoms/RouteItem/RouteItem'
 // import { SearchInput } from './@molecules/SearchInput/SearchInput'
 import { ConditionalWrapper } from './ConditionalWrapper'
@@ -221,7 +220,6 @@ export const Header = () => {
             <ENSWithGradient height={space['12']} />
           )}
         </ConditionalWrapper>
-        {!isInitial && isConnected && <HamburgerMenu align="left" dropdownItems={statefulRoutes} />}
         {router.asPath !== '/' && breakpoints.md && (
           <>
             <VerticalLine />
@@ -246,7 +244,6 @@ export const Header = () => {
             {RouteItems}
           </RouteContainer>
         </RouteWrapper>
-        {!isInitial && !isConnected && <HamburgerMenu dropdownItems={statefulRoutes} />}
         <HeaderConnect />
       </NavContainer>
     </HeaderWrapper>
