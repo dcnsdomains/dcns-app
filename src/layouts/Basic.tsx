@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { useNetwork, useSwitchNetwork } from 'wagmi'
-import { Dialog, mq } from '@ensdomains/thorin'
+import { mq } from '@ensdomains/thorin'
 import { Footer } from '@app/components/Footer'
 import { Navigation } from './Navigation'
 
@@ -42,38 +42,6 @@ const BottomPlaceholder = styled.div(
         display: none;
       `,
     )}
-  `,
-)
-
-const StyledDialog = styled(Dialog)(
-  () => css`
-    height: 80vh;
-
-    & > div {
-      padding: 0;
-    }
-
-    & > div > div {
-      height: 100%;
-      gap: 0;
-    }
-
-    ${mq.sm.min(css`
-      max-width: 70vw;
-      width: 60vw;
-      height: 90vh;
-
-      & > div {
-        max-width: 60vw;
-        width: 60vw;
-        height: 90vh;
-        padding: 0;
-      }
-      & > div > div {
-        max-width: 60vw;
-        height: 90vh;
-      }
-    `)}
   `,
 )
 
