@@ -57,7 +57,7 @@ export const SocialIcon = ({
   const breakpoints = useBreakpoint()
 
   return (
-    <SocialIconWrapper href={href} $boxSize={breakpoints.sm ? '10' : '8'}>
+    <SocialIconWrapper href={href} $boxSize={breakpoints.sm ? '10' : '8'} target='_blank'>
       <StyledIcon key={href} $iconColor={color} as={Icon} />
       {ColoredIcon && <StyledColoredIcon as={ColoredIcon} />}
     </SocialIconWrapper>
