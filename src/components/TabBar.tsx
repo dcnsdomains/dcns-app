@@ -72,12 +72,9 @@ const TabItems = styled.div(
   `,
 )
 
-const profileRoute = getRoute('profile')
-
 const TabBarProfile = ({ address, isActive }: { address: string; isActive: boolean }) => {
   return (
-    <BaseLink href={profileRoute.href} passHref>
-    </BaseLink>
+    <></>
   )
 }
 

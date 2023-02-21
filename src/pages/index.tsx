@@ -7,6 +7,8 @@ import { Typography, mq } from '@ensdomains/thorin'
 import { LanugageDropdown } from '@app/components/LanguageDropdown'
 import { LeadingHeading } from '@app/components/LeadingHeading'
 
+import ENSWithGradient from '../assets/ENSWithGradient.svg'
+
 const GradientTitle = styled.h1(
   ({ theme }) => css`
     font-size: ${theme.fontSizes.headingTwo};
@@ -94,7 +96,7 @@ export default function Page() {
       </Head>
       <StyledLeadingHeading>
         <LogoAndLanguage>
-          {/* <StyledENS as={ENSWithGradient} /> */}
+          <StyledENS as={ENSWithGradient} />
           <LanugageDropdown />
         </LogoAndLanguage>
       </StyledLeadingHeading>
