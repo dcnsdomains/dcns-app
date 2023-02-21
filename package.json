@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ensdomains/ensjs": "^3.0.0-alpha.47",
     "@ensdomains/eth-ens-namehash": "^2.0.15",
     "@ensdomains/thorin": "0.6.28",
+    "@ethersproject/bignumber": "^5.7.0",
     "@next/font": "13.1.6",
     "@rainbow-me/rainbowkit": "^0.11.0",
     "@svgr/webpack": "^6.5.1",
@@ -38,6 +40,7 @@
     "react-use": "^17.4.0",
     "styled-components": "^5.3.6",
     "typescript": "4.9.5",
+    "use-immer": "^0.7.0",
     "wagmi": "^0.11.6"
   }
 }

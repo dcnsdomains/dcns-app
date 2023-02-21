@@ -1,0 +1,10 @@
+export type RegistrationStatus =
+  | 'invalid'
+  | 'registered'
+  | 'gracePeriod'
+  | 'premium'
+  | 'available'
+  | 'short'
+  | 'notImported'
+  | 'notOwned'
+  | 'unsupportedTLD'

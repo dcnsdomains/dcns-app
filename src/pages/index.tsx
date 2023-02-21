@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { Typography, mq } from '@ensdomains/thorin'
 
-// import { SearchInput } from '@app/components/@molecules/SearchInput/SearchInput'
+import { SearchInput } from '@app/components/@molecules/SearchInput/SearchInput'
 import { LanugageDropdown } from '@app/components/LanguageDropdown'
 import { LeadingHeading } from '@app/components/LeadingHeading'
 
@@ -100,7 +100,6 @@ export default function Page() {
           <LanugageDropdown />
         </LogoAndLanguage>
       </StyledLeadingHeading>
-      {/* <FaucetBanner /> */}
       <Container>
         <Stack>
           <GradientTitle>{t('title')}</GradientTitle>
@@ -109,7 +108,7 @@ export default function Page() {
               {t('description')}
             </Typography>
           </SubtitleWrapper>
-          {/* <SearchInput /> */}
+          <SearchInput />
         </Stack>
       </Container>
     </>
