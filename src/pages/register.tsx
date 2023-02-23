@@ -4,6 +4,7 @@ import { useAccount } from 'wagmi'
 import { useInitial } from '@app/hooks/useInitial'
 import { useRouterWithHistory } from '@app/hooks/useRouterWithHistory'
 import { ContentGrid } from '@app/layouts/ContentGrid'
+import Registration from '@app/components/pages/profile/[name]/registration/Registration'
 
 export default function Page() {
   const router = useRouterWithHistory()
@@ -15,7 +16,7 @@ export default function Page() {
   const { address, isConnecting, isReconnecting } = useAccount()
   const accountLoading = isConnecting || isReconnecting
 
-  return <></>
+  return <Registration nameDetails={''} isLoading={false} />
 }
 
 Page.getLayout = function getLayout(page: ReactElement) {
