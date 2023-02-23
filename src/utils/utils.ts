@@ -1,4 +1,5 @@
 import { toUtf8Bytes } from '@ethersproject/strings/lib/utf8'
+import { useNetwork } from 'wagmi'
 
 import { networkName } from './constants'
 
@@ -56,8 +57,12 @@ export const formatDateTime = (date: Date) => {
   return `${baseFormatted} (${timezoneString})`
 }
 
-export const makeEtherscanLink = (hash: string, network?: string) =>
-  `https://${!network || network === 'ethereum' ? '' : `${network}.`}etherscan.io/tx/${hash}`
+export const makeEtherscanLink = (hash: string) => {
+  const network = useNetwork()
+  const blockExplorer = network.chain?.blockExplorers?.default.url
+  if (!blockExplorer) return ''
+  return `${blockExplorer}/tx/${hash}`
+}
 
 export const isBrowser = !!(
   typeof window !== 'undefined' &&

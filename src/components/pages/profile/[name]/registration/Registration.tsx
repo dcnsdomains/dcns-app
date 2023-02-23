@@ -12,6 +12,7 @@ import { Content } from '@app/layouts/Content'
 import { BaseLinkWithHistory } from '@app/components/@atoms/BaseLink'
 
 import Pricing from './steps/Pricing/Pricing'
+import Complete from './steps/Complete'
 
 const ViewProfileContainer = styled.div(
   ({ theme }) => css`
@@ -185,7 +186,10 @@ const Registration = ({ nameDetails, isLoading }: Props) => {
               pricing: (
                 <Pricing />
               ),
-            }['pricing']
+              complete: (
+                <Complete nameDetails={nameDetails} callback={onComplete} />
+              ),
+            }['complete']
           ),
           // trailing: (
           //   {

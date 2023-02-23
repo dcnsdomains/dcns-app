@@ -16,7 +16,9 @@ export default function Page() {
   const { address, isConnecting, isReconnecting } = useAccount()
   const accountLoading = isConnecting || isReconnecting
 
-  return <Registration nameDetails={''} isLoading={false} />
+  const isLoading = accountLoading || initial
+
+  return <Registration nameDetails={{name}} isLoading={isLoading} />
 }
 
 Page.getLayout = function getLayout(page: ReactElement) {
