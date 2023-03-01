@@ -13,7 +13,6 @@ export default function handler(
   const tokenId = req.query.tokenId as string
 
   try {
-    const { provider } = getNetwork(networkName)
     const domainFontSize = getFontSize('tomokisun.dc')
     console.log('domainFontSize', domainFontSize)
 
