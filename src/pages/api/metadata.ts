@@ -1,7 +1,7 @@
 import getNetwork from '@app/utils/network'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(
+export default function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

@@ -16,6 +16,14 @@ const nextConfig = {
         source: '/:name/register',
         destination: '/register?name=:name'
       },
+      {
+        source: '/api/:networkName/:contractAddress/:tokenId',
+        destination: '/api/metadata?networkName=:networkName&contractAddress=:contractAddress&tokenId=:tokenId'
+      },
+      {
+        source: '/api/:networkName/:contractAddress/:tokenId/image',
+        destination: '/api/image?networkName=:networkName&contractAddress=:contractAddress&tokenId=:tokenId'
+      }
     ]
   },
   webpack: (config, options) => {
