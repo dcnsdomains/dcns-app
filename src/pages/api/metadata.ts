@@ -11,11 +11,14 @@ export default function handler(
 
   try {
     const { provider } = getNetwork(networkName)
-
     res.status(200).json({
-      networkName,
-      contractAddress,
-      tokenId,
+      name: "tomokisun.eth",
+      description: "tomokisun.eth, an ENS name.",
+      name_length: 9,
+      segment_length: 9,
+      url: "https://app.ens.domains/name/tomokisun.eth",
+      image: "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x22b020a6b21db370e0985f7d6e389cdfd55e599c4baea2b4beca6e4c508e14a3/image",
+      image_url: "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x22b020a6b21db370e0985f7d6e389cdfd55e599c4baea2b4beca6e4c508e14a3/image"
     })
   } catch (error: any) {
     const errorCode = (error?.code && Number(error.code)) || 500
