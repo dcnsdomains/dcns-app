@@ -2,12 +2,13 @@ import { createSVGfromTemplate } from '@app/utils/api/svg-template'
 import getNetwork from '@app/utils/network'
 import { createCanvas } from 'canvas'
 import type { NextApiRequest, NextApiResponse } from 'next'
-const btoa = require('btoa')
+import btoa from 'btoa'
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log('/api/:networkName/:contractAddress/:tokenId/image', req.query)
   const networkName = req.query.networkName as string
   const contractAddress = req.query.contractAddress as string
   const tokenId = req.query.tokenId as string
