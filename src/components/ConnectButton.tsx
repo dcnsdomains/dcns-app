@@ -7,6 +7,7 @@ import { Button, ExitSVG, Profile, mq } from '@ensdomains/thorin'
 import { DropdownItem } from '@ensdomains/thorin/dist/types/components/molecules/Dropdown/Dropdown'
 
 import { useBreakpoint } from '@app/utils/BreakpointProvider'
+import { usePrimary } from '@app/hooks/usePrimary'
 
 const StyledButtonWrapper = styled.div<{ $isTabBar?: boolean; $large?: boolean }>(
   ({ theme, $isTabBar, $large }) => [
@@ -83,11 +84,12 @@ export const ConnectButton = ({ isTabBar, large, inHeader }: Props) => {
 const HeaderProfile = ({ address }: { address: string }) => {
   const { t } = useTranslation('common')
   const { disconnect } = useDisconnect()
+  const { name } = usePrimary(address)
 
   return (
     <Profile
       address={address}
-      ensName={undefined}
+      ensName={name ?? undefined}
       dropdownItems={
         [
           {

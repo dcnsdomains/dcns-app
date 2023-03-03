@@ -7,7 +7,6 @@ import { useAccount } from 'wagmi'
 import { Helper, Typography, mq } from '@ensdomains/thorin'
 
 import { useRouterWithHistory } from '@app/hooks/useRouterWithHistory'
-import { useContractAddress } from '@app/hooks/useContractAddress'
 import { Content } from '@app/layouts/Content'
 import { BaseLinkWithHistory } from '@app/components/@atoms/BaseLink'
 
@@ -52,7 +51,6 @@ const Registration = ({ nameDetails, isLoading }: Props) => {
   const { address } = useAccount()
   const selected = { name: nameDetails.normalisedName, address: address! }
   const { normalisedName } = nameDetails
-  const defaultResolverAddress = useContractAddress('PublicResolver')
   // const { data: resolverExists, isLoading: resolverExistsLoading } = useResolverExists(
   //   normalisedName,
   //   defaultResolverAddress,
