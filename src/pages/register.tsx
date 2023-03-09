@@ -17,7 +17,7 @@ export default function Page() {
 
   const isLoading = accountLoading || initial
 
-  return <Registration nameDetails={{name}} isLoading={isLoading} />
+  return <Registration normalisedName={name} isLoading={isLoading} />
 }
 
 Page.getLayout = function getLayout(page: ReactElement) {
