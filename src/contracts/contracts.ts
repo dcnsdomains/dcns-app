@@ -1,4 +1,4 @@
-import { StaticJsonRpcProvider } from '@ethersproject/providers';
+import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { Contract } from 'ethers'
 
 import * as DcNSRegistryContract from '@app/abis/DcNSRegistry.json'
