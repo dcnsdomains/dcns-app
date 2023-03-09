@@ -9,7 +9,6 @@ import Registration from '@app/components/pages/profile/[name]/registration/Regi
 export default function Page() {
   const router = useRouterWithHistory()
   const name = router.query.name as string
-  console.log('name', name)
 
   const initial = useInitial()
 
