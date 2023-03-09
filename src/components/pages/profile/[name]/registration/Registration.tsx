@@ -166,7 +166,6 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
         inlineHeading
       >
         {{
-          // header: nameDetails.expiryDate && (
           header: (
             <ViewProfileContainer>
               <BaseLinkWithHistory href={'/expired-profile/'} passHref>
@@ -188,43 +187,6 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
               ),
             }['complete']
           ),
-          // trailing: (
-          //   {
-          //     pricing: (
-          //       <Pricing
-          //         resolverExists={resolverExists}
-          //         nameDetails={nameDetails}
-          //         callback={pricingCallback}
-          //         hasPrimaryName={!!primaryName}
-          //         registrationData={item}
-          //       />
-          //     ),
-          //     profile: (
-          //       <Profile
-          //         resolverExists={resolverExists}
-          //         nameDetails={nameDetails}
-          //         registrationData={item}
-          //         callback={profileCallback}
-          //       />
-          //     ),
-          //     info: (
-          //       <Info
-          //         nameDetails={nameDetails}
-          //         registrationData={item}
-          //         callback={genericCallback}
-          //         onProfileClick={infoProfileCallback}
-          //       />
-          //     ),
-          //     transactions: (
-          //       <Transactions
-          //         nameDetails={nameDetails}
-          //         registrationData={item}
-          //         onStart={onStart}
-          //         callback={transactionsCallback}
-          //       />
-          //     ),
-          //     complete: <Complete nameDetails={nameDetails} callback={onComplete} />,
-          //   }[step]
         }}
       </Content>
     </>
