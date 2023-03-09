@@ -40,17 +40,16 @@ const ViewProfileContainer = styled.div(
 )
 
 type Props = {
-  nameDetails: any
+  normalisedName: string
   isLoading: boolean
 }
 
-const Registration = ({ nameDetails, isLoading }: Props) => {
+const Registration = ({ normalisedName, isLoading }: Props) => {
   const { t } = useTranslation('register')
 
   const router = useRouterWithHistory()
   const { address } = useAccount()
-  const selected = { name: nameDetails.normalisedName, address: address! }
-  const { normalisedName } = nameDetails
+  const selected = { name: normalisedName, address: address! }
   // const { data: resolverExists, isLoading: resolverExistsLoading } = useResolverExists(
   //   normalisedName,
   //   defaultResolverAddress,
@@ -185,7 +184,7 @@ const Registration = ({ nameDetails, isLoading }: Props) => {
                 <Pricing />
               ),
               complete: (
-                <Complete nameDetails={nameDetails} callback={onComplete} />
+                <Complete normalisedName={normalisedName} callback={onComplete} />
               ),
             }['complete']
           ),

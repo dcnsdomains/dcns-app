@@ -120,12 +120,11 @@ const Confetti = () => {
 }
 
 type Props = {
-  // nameDetails: ReturnType<typeof useNameDetails>
-  nameDetails: any
+  normalisedName: string
   callback: (toProfile: boolean) => void
 }
 
-const Complete = ({ nameDetails: { normalisedName: name }, callback }: Props) => {
+const Complete = ({ normalisedName: name, callback }: Props) => {
   const { t } = useTranslation('register')
   const { address } = useAccount()
   const keySuffix = `${name}-${address}`
@@ -146,7 +145,6 @@ const Complete = ({ nameDetails: { normalisedName: name }, callback }: Props) =>
         </SubtitleWithGradient>
       </TitleContainer>
       <Typography>{t('steps.complete.description')}</Typography>
-      {/* {InvoiceFilled} */}
       <ButtonContainer>
         <MobileFullWidth>
           <Button colorStyle="accentSecondary" onClick={() => callback(false)}>
