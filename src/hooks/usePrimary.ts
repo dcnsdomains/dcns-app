@@ -1,21 +1,12 @@
-import { useQuery } from 'wagmi'
-import { useRegistrar } from './useRegistrar'
+import { useName } from './useName'
+import { useReverseNode } from './useReverseNode'
 
 export const usePrimary = (address: string) => {
-  const registrar = useRegistrar()
-
-  const {
-    data: name,
-    isLoading: loading,
-    status,
-  } = useQuery(['getName', address], () => registrar.getName(address), {
-    enabled: address !== '',
-    cacheTime: 60,
-  })
+  const { reverseNode, isLoading } = useReverseNode(address)
+  const { name } = useName(reverseNode ?? '')
 
   return {
     name: name ?? null,
-    loading,
-    status,
+    loading: isLoading,
   }
 }

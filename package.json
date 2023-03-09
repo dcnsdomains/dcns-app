@@ -10,7 +10,6 @@
     "generate": "typechain --target ethers-v5 --out-dir src/abis/types \"./src/abis/**/*.json\""
   },
   "dependencies": {
-    "@dcnsdomains/function": "^0.0.5",
     "@ensdomains/ensjs": "^3.0.0-alpha.47",
     "@ensdomains/eth-ens-namehash": "^2.0.15",
     "@ensdomains/thorin": "0.6.28",

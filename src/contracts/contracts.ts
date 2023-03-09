@@ -1,12 +1,12 @@
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { Contract } from 'ethers'
 
-import * as DcNSRegistryContract from '@app/abis/DcNSRegistry.json'
-import * as PublicResolverContract from '@app/abis/PublicResolver.json'
-import * as NamedRegistrarContract from '@app/abis/NamedRegistrar.json'
-import * as DcRegistrarControllerContract from '@app/abis/DcRegistrarController.json'
-import * as ReverseRegistrarContract from '@app/abis/ReverseRegistrar.json'
-import * as ERC721DatastoreContract from '@app/abis/ERC721Datastore.json'
+import DcNSRegistryContract from '@app/abis/DcNSRegistry.json'
+import PublicResolverContract from '@app/abis/PublicResolver.json'
+import NamedRegistrarContract from '@app/abis/NamedRegistrar.json'
+import DcRegistrarControllerContract from '@app/abis/DcRegistrarController.json'
+import ReverseRegistrarContract from '@app/abis/ReverseRegistrar.json'
+import ERC721DatastoreContract from '@app/abis/ERC721Datastore.json'
 
 import { DcNSRegistry, PublicResolver, NamedRegistrar, DcRegistrarController, ReverseRegistrar, ERC721Datastore } from '@app/abis/types'
 
