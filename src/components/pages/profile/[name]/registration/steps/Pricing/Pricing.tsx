@@ -85,16 +85,22 @@ const OutlinedContainerTitle = styled(Typography)(
 )
 
 type Props = {
-
+  normalisedName: string
+  callback: (years: number) => void
+  hasPrimaryName: boolean
 }
 
 const Pricing = ({
-
+  normalisedName,
+  callback,
+  hasPrimaryName,
 }: Props) => {
   const { t } = useTranslation('register')
 
-  const { address } = useAccountSafely()
-  const { data: balance } = useBalance({ address: '0x4F724516242829DC5Bc6119f666b18102437De53' })
+  const { address: addr } = useAccountSafely()
+  const address = addr as `0x${string}`
+  const { data: balance } = useBalance({ address: address })
+  const [years, setYears] = useState(1)
 
   let actionButton: ReactNode
 
@@ -108,47 +114,35 @@ const Pricing = ({
     )
   } else {
     actionButton = (
-      <Button>{t('action.next', { ns: 'common' })}</Button>
+      <Button
+        onClick={() => callback(years) }
+      >
+        {t('action.next', { ns: 'common' })}
+      </Button>
     )
   }
 
   return (
     <StyledCard>
-      <StyledHeading>{t('heading', { name: 'tomokisun.dc' })}</StyledHeading>
+      <StyledHeading>{t('heading', { name: normalisedName })}</StyledHeading>
       <PlusMinusControl
         minValue={1}
-        value={1}
+        value={years}
         onChange={(e) => {
           const newYears = parseInt(e.target.value)
+          if (!Number.isNaN(newYears)) {
+            setYears(newYears)
+          }
         }}
         highlighted
       />
       <FullInvoice
-        years={1}
+        years={years}
         totalYearlyFee={BigNumber.from('10000000000000000000')}
         estimatedGasFee={BigNumber.from('10000000000000000000')}
         estimatedGasLoading={false}
         gasPrice={BigNumber.from('10000000000000000000')}
       />
-      <OutlinedContainer>
-        <OutlinedContainerTitle $name='title'>
-          {t('steps.pricing.primaryName')}
-        </OutlinedContainerTitle>
-        <CheckboxWrapper $name='checkbox'>
-          <Field
-            hideLabel
-            label={t('steps.pricing.primaryName')}
-            inline
-            reverse
-            disabled={false}
-          >
-            <h1>Field</h1>
-          </Field>
-        </CheckboxWrapper>
-        <OutlinedContainerDescription $name='description'>
-          {t('steps.pricing.primaryNameMessage')}
-        </OutlinedContainerDescription>
-      </OutlinedContainer>
       <MobileFullWidth>{actionButton}</MobileFullWidth>
     </StyledCard>
   )

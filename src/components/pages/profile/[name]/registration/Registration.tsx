@@ -12,6 +12,7 @@ import { BaseLinkWithHistory } from '@app/components/@atoms/BaseLink'
 
 import Pricing from './steps/Pricing/Pricing'
 import Complete from './steps/Complete'
+import { usePrimary } from '@app/hooks/usePrimary'
 
 const ViewProfileContainer = styled.div(
   ({ theme }) => css`
@@ -49,6 +50,7 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
 
   const router = useRouterWithHistory()
   const { address } = useAccount()
+  const { name: primaryName, loading: primaryLoading } = usePrimary(address!)
   const selected = { name: normalisedName, address: address! }
   // const { data: resolverExists, isLoading: resolverExistsLoading } = useResolverExists(
   //   normalisedName,
@@ -64,6 +66,10 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
   // const registerKey = `register-${keySuffix}`
 
   // const { cleanupFlow } = useTransactionFlow()
+
+  const pricingCallback = () => {
+
+  }
 
   // const pricingCallback = ({ years, reverseRecord }: RegistrationStepData['pricing']) => {
   //   dispatch({ name: 'setPricingData', payload: { years, reverseRecord }, selected })
@@ -180,12 +186,16 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
           trailing: (
             {
               pricing: (
-                <Pricing />
+                <Pricing
+                  normalisedName={normalisedName}
+                  callback={pricingCallback}
+                  hasPrimaryName={!!primaryName}
+                />
               ),
               complete: (
                 <Complete normalisedName={normalisedName} callback={onComplete} />
               ),
-            }['complete']
+            }['pricing']
           ),
         }}
       </Content>
