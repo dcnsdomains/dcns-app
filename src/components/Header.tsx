@@ -6,16 +6,14 @@ import { useAccount } from 'wagmi'
 
 import { mq } from '@ensdomains/thorin'
 
-// import { useRecentTransactions } from '@app/hooks/transactions/useRecentTransactions'
 import { useInitial } from '@app/hooks/useInitial'
 import { routes } from '@app/routes'
 import { useBreakpoint } from '@app/utils/BreakpointProvider'
 
-import ENSFull from '../assets/ENSFull.svg'
-import ENSWithGradient from '../assets/ENSWithGradient.svg'
+import DcNSFull from '../assets/DcNSFull.svg'
 import BaseLink from './@atoms/BaseLink'
 import { RouteItem } from './@atoms/RouteItem/RouteItem'
-// import { SearchInput } from './@molecules/SearchInput/SearchInput'
+import { SearchInput } from './@molecules/SearchInput/SearchInput'
 import { ConditionalWrapper } from './ConditionalWrapper'
 import { HeaderConnect } from './ConnectButton'
 
@@ -141,8 +139,6 @@ export const Header = () => {
   const isInitial = useInitial()
   const { isConnected } = useAccount()
   const breakpoints = useBreakpoint()
-  // const transactions = useRecentTransactions()
-  // const pendingTransactions = transactions.filter((x) => x.status === 'pending')
   const searchWrapperRef = useRef<HTMLDivElement>(null)
   const routeContainerRef = useRef<HTMLDivElement>(null)
   const [state, toggle] = useTransition({
@@ -214,11 +210,7 @@ export const Header = () => {
             </BaseLink>
           )}
         >
-          {router.asPath === '/' ? (
-            <ENSFull height={space['12']} />
-          ) : (
-            <ENSWithGradient height={space['12']} />
-          )}
+          <DcNSFull height={space['12']} />
         </ConditionalWrapper>
         {router.asPath !== '/' && breakpoints.md && (
           <>
@@ -228,7 +220,7 @@ export const Header = () => {
               ref={searchWrapperRef}
               $state={breakpoints.lg ? 'entered' : state}
             >
-              {/* <SearchInput size="large" /> */}
+              <SearchInput size="large" />
             </SearchWrapper>
           </>
         )}
