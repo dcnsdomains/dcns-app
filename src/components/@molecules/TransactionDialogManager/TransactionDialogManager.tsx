@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Dialog } from '@ensdomains/thorin'
-import { TransactionStageModal } from '@app/components/@molecules/TransactionDialogManager/stage/TransactionStageModal'
+import { TransactionStageModal } from './stage/TransactionStageModal'
 
 export type Props = {
   normalizeName: string
