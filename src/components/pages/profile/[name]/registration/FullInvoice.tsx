@@ -32,7 +32,6 @@ const InvoiceContainer = styled.div(
 type Props = {
   years: number
   totalYearlyFee: BigNumber | undefined
-  estimatedGasFee: BigNumber | undefined
   estimatedGasLoading: boolean
   gasPrice: BigNumber | undefined
 }
@@ -40,15 +39,11 @@ type Props = {
 const FullInvoice = ({
   years,
   totalYearlyFee,
-  estimatedGasFee,
   estimatedGasLoading,
   gasPrice,
 }: Props) => {
   const { t } = useTranslation('register')
-  const fiatUnit = 'usd'
-
-  const [currencyUnit, setCurrencyUnit] = useState<CurrencyUnit>('wDOGE')
-  const currencyDisplay = currencyUnit === 'fiat' ? fiatUnit : 'wDOGE'
+  const currencyDisplay = 'wDOGE'
 
   const invoiceItems = useMemo(
     () => [
@@ -56,12 +51,8 @@ const FullInvoice = ({
         label: t('invoice.yearRegistration', { years }),
         value: totalYearlyFee,
       },
-      {
-        label: t('invoice.estimatedNetworkFee'),
-        value: estimatedGasFee,
-      },
     ],
-    [t, years, totalYearlyFee, estimatedGasFee],
+    [t, years, totalYearlyFee],
   )
 
   if (estimatedGasLoading) return <InvoiceContainer />

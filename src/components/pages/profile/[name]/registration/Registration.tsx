@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { useAccount } from 'wagmi'
 
-import { Helper, Typography, mq } from '@ensdomains/thorin'
+import { Typography, mq } from '@ensdomains/thorin'
 
 import { useRouterWithHistory } from '@app/hooks/useRouterWithHistory'
 import { Content } from '@app/layouts/Content'
@@ -13,6 +13,7 @@ import { BaseLinkWithHistory } from '@app/components/@atoms/BaseLink'
 import Pricing from './steps/Pricing/Pricing'
 import Complete from './steps/Complete'
 import { usePrimary } from '@app/hooks/usePrimary'
+import { TransactionDialogManager } from '@app/components/@molecules/TransactionDialogManager/TransactionDialogManager'
 
 const ViewProfileContainer = styled.div(
   ({ theme }) => css`
@@ -52,91 +53,18 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
   const { address } = useAccount()
   const { name: primaryName, loading: primaryLoading } = usePrimary(address!)
   const selected = { name: normalisedName, address: address! }
-  // const { data: resolverExists, isLoading: resolverExistsLoading } = useResolverExists(
-  //   normalisedName,
-  //   defaultResolverAddress,
-  // )
+  const [years, setYears] = useState(1)
+  const [isDialogShown, setDialogShown] = useState(false)
 
-  // const labelTooLong = isLabelTooLong(normalisedName)
-  // const { dispatch, item } = useRegistrationReducer(selected)
-  // const step = item.queue[item.stepIndex]
-
-  // const keySuffix = `${nameDetails.normalisedName}-${address}`
-  // const commitKey = `commit-${keySuffix}`
-  // const registerKey = `register-${keySuffix}`
-
-  // const { cleanupFlow } = useTransactionFlow()
-
-  const pricingCallback = () => {
-
+  const pricingCallback = (years: number) => {
+    setYears(years)
+    setDialogShown(true)
+  }
+  const handleBack = () => {
+    setDialogShown(false)
   }
 
-  // const pricingCallback = ({ years, reverseRecord }: RegistrationStepData['pricing']) => {
-  //   dispatch({ name: 'setPricingData', payload: { years, reverseRecord }, selected })
-  //   if (!item.queue.includes('profile')) {
-  //     // if profile is not in queue, set the default profile data
-  //     dispatch({
-  //       name: 'setProfileData',
-  //       payload: {
-  //         records: [{ key: 'ETH', group: 'address', type: 'addr', value: address! }],
-  //         clearRecords: resolverExists,
-  //         resolver: defaultResolverAddress,
-  //       },
-  //       selected,
-  //     })
-  //     if (reverseRecord) {
-  //       // if reverse record is selected, add the profile step to the queue
-  //       dispatch({
-  //         name: 'setQueue',
-  //         payload: ['pricing', 'profile', 'info', 'transactions', 'complete'],
-  //         selected,
-  //       })
-  //     }
-  //   }
-
-  //   // If profile is in queue and reverse record is selected, make sure that eth record is included and is set to address
-  //   if (item.queue.includes('profile') && reverseRecord) {
-  //     const recordsWithoutEth = item.records.filter((record) => record.key !== 'ETH')
-  //     const newRecords: ProfileRecord[] = [
-  //       { key: 'ETH', group: 'address', type: 'addr', value: address! },
-  //       ...recordsWithoutEth,
-  //     ]
-  //     dispatch({ name: 'setProfileData', payload: { records: newRecords }, selected })
-  //   }
-
-  //   dispatch({ name: 'increaseStep', selected })
-  // }
-
-  // const profileCallback = ({
-  //   records,
-  //   resolver,
-  //   back,
-  // }: RegistrationStepData['profile'] & BackObj) => {
-  //   dispatch({ name: 'setProfileData', payload: { records, resolver }, selected })
-  //   dispatch({ name: back ? 'decreaseStep' : 'increaseStep', selected })
-  // }
-
-  // const genericCallback = ({ back }: BackObj) => {
-  //   dispatch({ name: back ? 'decreaseStep' : 'increaseStep', selected })
-  // }
-
-  // const transactionsCallback = ({ back, resetSecret }: BackObj & { resetSecret?: boolean }) => {
-  //   if (resetSecret) {
-  //     dispatch({ name: 'resetSecret', selected })
-  //   }
-  //   genericCallback({ back })
-  // }
-
-  // const infoProfileCallback = () => {
-  //   dispatch({
-  //     name: 'setQueue',
-  //     payload: ['pricing', 'profile', 'info', 'transactions', 'complete'],
-  //     selected,
-  //   })
-  // }
-
   const onStart = () => {
-    // dispatch({ name: 'setStarted', selected })
   }
 
   const onComplete = (toProfile: boolean) => {
@@ -193,12 +121,21 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
                 />
               ),
               complete: (
-                <Complete normalisedName={normalisedName} callback={onComplete} />
+                <Complete
+                  normalisedName={normalisedName}
+                  callback={onComplete}
+                />
               ),
             }['pricing']
           ),
         }}
       </Content>
+      <TransactionDialogManager
+        normalizeName={normalisedName}
+        years={years}
+        open={isDialogShown}
+        back={handleBack}
+      />
     </>
   )
 }

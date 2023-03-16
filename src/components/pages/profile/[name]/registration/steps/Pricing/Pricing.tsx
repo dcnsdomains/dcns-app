@@ -6,17 +6,10 @@ import { useBalance } from 'wagmi'
 import { Button, Field, Heading, Toggle, Typography, mq } from '@ensdomains/thorin'
 
 import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
-// import { PlusMinusControl } from '@app/components/@atoms/PlusMinusControl/PlusMinusControl'
-// import { RegistrationTimeComparisonBanner } from '@app/components/@atoms/RegistrationTimeComparisonBanner/RegistrationTimeComparisonBanner'
 import { Card } from '@app/components/Card'
 import { ConnectButton } from '@app/components/ConnectButton'
 import { useAccountSafely } from '@app/hooks/useAccountSafely'
-// import { useEstimateFullRegistration } from '@app/hooks/useEstimateRegistration'
-// import { useNameDetails } from '@app/hooks/useNameDetails'
-import { useBreakpoint } from '@app/utils/BreakpointProvider'
 import { PlusMinusControl } from '@app/components/@atoms/PlusMinusControl/PlusMinusControl'
-import FullInvoice from '../../FullInvoice'
-import { BigNumber } from 'ethers'
 
 const StyledCard = styled(Card)(
   ({ theme }) => css`
@@ -29,24 +22,6 @@ const StyledCard = styled(Card)(
     ${mq.md.min(css`
       padding: ${theme.space['6']} ${theme.space['18']};
       gap: ${theme.space['6']};
-    `)}
-  `,
-)
-
-const OutlinedContainer = styled.div(
-  ({ theme }) => css`
-    width: ${theme.space.full};
-    display: grid;
-    align-items: center;
-    grid-template-areas: 'title checkbox' 'description description';
-    gap: ${theme.space['2']};
-
-    padding: ${theme.space['4']};
-    border-radius: ${theme.radii.large};
-    border: ${theme.colors.border} solid 1px;
-
-    ${mq.md.min(css`
-      grid-template-areas: 'title checkbox' 'description checkbox';
     `)}
   `,
 )
@@ -66,23 +41,6 @@ const StyledHeading = styled(Heading)(
 const gridAreaStyle = ({ $name }: { $name: string }) => css`
   grid-area: ${$name};
 `
-
-const CheckboxWrapper = styled.div(
-  () => css`
-    width: 100%;
-  `,
-  gridAreaStyle,
-)
-const OutlinedContainerDescription = styled(Typography)(gridAreaStyle)
-
-const OutlinedContainerTitle = styled(Typography)(
-  ({ theme }) => css`
-    font-size: ${theme.fontSizes.large};
-    font-weight: ${theme.fontWeights.bold};
-    white-space: nowrap;
-  `,
-  gridAreaStyle,
-)
 
 type Props = {
   normalisedName: string
@@ -135,13 +93,6 @@ const Pricing = ({
           }
         }}
         highlighted
-      />
-      <FullInvoice
-        years={years}
-        totalYearlyFee={BigNumber.from('10000000000000000000')}
-        estimatedGasFee={BigNumber.from('10000000000000000000')}
-        estimatedGasLoading={false}
-        gasPrice={BigNumber.from('10000000000000000000')}
       />
       <MobileFullWidth>{actionButton}</MobileFullWidth>
     </StyledCard>
