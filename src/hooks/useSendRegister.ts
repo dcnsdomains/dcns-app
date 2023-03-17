@@ -38,7 +38,7 @@ export const useSendRegister = (
     data: request,
     isLoading: requestLoading,
     error: _requestError,
-  } = useQuery(['prepareTx', name, addr, years], async () => {
+  } = useQuery(['prepareTx', name, addr, _years], async () => {
     const populatedTransaction = await controller.connect(signer as JsonRpcSigner).populateTransaction.registerWithConfig(
       name,
       addr,
@@ -46,18 +46,20 @@ export const useSendRegister = (
       resolverAddr,
       addr,
       {
-        gasLimit: ethers.utils.parseEther('1'),
-        value: price,
+        value: 0,
       }
     )
 
-    let gasLimit = await signer!.estimateGas(populatedTransaction)
-    // gasLimit = gasLimit.add(BigNumber.from(45000))
+    const gasPrice = await provider.getGasPrice()
+    const gasLimit = BigNumber.from('10000000')
+
+    console.log('price', price?.toString())
     
     return {
       ...populatedTransaction,
       to: populatedTransaction.to as `0x${string}`,
       gasLimit,
+      gasPrice,
       value: price,
     }
   },
