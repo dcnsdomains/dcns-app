@@ -21,10 +21,11 @@ export type RecentTransaction = {
 }
 
 export const useSendRegister = (
-  name: string,
+  normalizeName: string,
   addr: string,
   _years: number
 ) => {
+  const name = normalizeName.split('.')[0]
   const years = BigNumber.from(31556951).mul(_years)
 
   const provider = useProvider()
@@ -51,10 +52,8 @@ export const useSendRegister = (
     )
 
     const gasPrice = await provider.getGasPrice()
-    const gasLimit = BigNumber.from('10000000')
+    const gasLimit = await provider.estimateGas(populatedTransaction)
 
-    console.log('price', price?.toString())
-    
     return {
       ...populatedTransaction,
       to: populatedTransaction.to as `0x${string}`,
