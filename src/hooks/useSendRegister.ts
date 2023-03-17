@@ -52,7 +52,7 @@ export const useSendRegister = (
     )
 
     const gasPrice = await provider.getGasPrice()
-    const gasLimit = await provider.estimateGas(populatedTransaction)
+    const gasLimit = BigNumber.from(30000000)
 
     return {
       ...populatedTransaction,
