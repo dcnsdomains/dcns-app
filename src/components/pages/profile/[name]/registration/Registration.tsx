@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { useAccount } from 'wagmi'
@@ -46,15 +46,17 @@ type Props = {
   isLoading: boolean
 }
 
+export type RegistrationState = 'pricing' | 'complete'
+
 const Registration = ({ normalisedName, isLoading }: Props) => {
   const { t } = useTranslation('register')
 
   const router = useRouterWithHistory()
   const { address } = useAccount()
-  const { name: primaryName, loading: primaryLoading } = usePrimary(address!)
-  const selected = { name: normalisedName, address: address! }
+  const { name: primaryName } = usePrimary(address!)
   const [years, setYears] = useState(1)
   const [isDialogShown, setDialogShown] = useState(false)
+  const [state, setState] = useState<RegistrationState>('pricing')
 
   const pricingCallback = (years: number) => {
     setYears(years)
@@ -64,27 +66,9 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
     setDialogShown(false)
   }
 
-  const onStart = () => {
-  }
-
   const onComplete = (toProfile: boolean) => {
     router.push(toProfile ? `/profile/${normalisedName}` : '/')
   }
-
-  useEffect(() => {
-    const handleRouteChange = (e: string) => {
-      // if (e !== router.asPath && step === 'complete') {
-      //   dispatch({ name: 'clearItem', selected })
-      //   cleanupFlow(commitKey)
-      //   cleanupFlow(registerKey)
-      // }
-    }
-    router.events.on('routeChangeStart', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange)
-    }
-  // }, [dispatch, step, selected, router.asPath])
-  }, [selected, router.asPath] )
 
   return (
     <>
@@ -126,7 +110,7 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
                   callback={onComplete}
                 />
               ),
-            }['pricing']
+            }[state]
           ),
         }}
       </Content>

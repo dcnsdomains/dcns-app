@@ -28,6 +28,7 @@ export const TransactionDialogManager = ({
       <TransactionStageModal
         normalizeName={normalizeName}
         years={years}
+        back={back}
       />
     )
   }, [onDismiss, t])
