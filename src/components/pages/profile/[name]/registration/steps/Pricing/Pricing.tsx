@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { useBalance } from 'wagmi'
 
-import { Button, Field, Heading, Toggle, Typography, mq } from '@ensdomains/thorin'
+import { Button,  Heading, mq } from '@ensdomains/thorin'
 
 import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
 import { Card } from '@app/components/Card'
@@ -37,10 +37,6 @@ const StyledHeading = styled(Heading)(
     }
   `,
 )
-
-const gridAreaStyle = ({ $name }: { $name: string }) => css`
-  grid-area: ${$name};
-`
 
 type Props = {
   normalisedName: string

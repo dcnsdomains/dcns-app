@@ -1,15 +1,10 @@
-import dynamic from 'next/dynamic'
-import { useMemo } from 'react'
-import type ConfettiT from 'react-confetti'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
-import { useAccount, useWaitForTransaction } from 'wagmi'
+import { useAccount } from 'wagmi'
 
 import { Button, Typography, mq } from '@ensdomains/thorin'
 
-import { Invoice } from '@app/components/@atoms/Invoice/Invoice'
 import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
-import NFTTemplate from '@app/components/@molecules/NFTTemplate/NFTTemplate'
 import { Card } from '@app/components/Card'
 import useWindowSize from '@app/hooks/useWindowSize'
 import ReactConfetti from 'react-confetti'
