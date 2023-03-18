@@ -8,6 +8,7 @@ import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
 import { Card } from '@app/components/Card'
 import useWindowSize from '@app/hooks/useWindowSize'
 import ReactConfetti from 'react-confetti'
+import NFTTemplate from '@app/components/@molecules/NFTTemplate/NFTTemplate'
 
 const StyledCard = styled(Card)(
   ({ theme }) => css`
@@ -130,7 +131,7 @@ const Complete = ({ normalisedName: name, callback }: Props) => {
     <StyledCard>
       <Confetti />
       <NFTContainer>
-        {/* <NFTTemplate backgroundImage={undefined} isNormalised name={name} /> */}
+        <NFTTemplate backgroundImage={undefined} isNormalised name={name} />
       </NFTContainer>
       <TitleContainer>
         <Title>{t('steps.complete.heading')}</Title>
