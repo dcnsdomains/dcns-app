@@ -4,12 +4,12 @@ export declare type ContractName = 'DcNSRegistry' | 'PublicResolver' | 'NamedReg
 
 const contractAddresses: { [key: number]: { [key: string]: string } } = {
   2000: {
-    'DcNSRegistry': '',
-    'PublicResolver': '',
-    'NamedRegistrar': '',
-    'DcRegistrarController': '',
-    'ReverseRegistrar': '',
-    'ERC721Datastore': '',
+    'DcNSRegistry': '0xeDD7631fa23382780206f46f978120066253010e',
+    'PublicResolver': '0x3CCEd58C134511CA8D410118255f81774d5BE24A',
+    'NamedRegistrar': '0xAbB9730D69396ac28DB81B6b43F0D74803c4E3AD',
+    'DcRegistrarController': '0xC348f7A377B21933e465f2E9E73A91D6Ee9313Eb',
+    'ReverseRegistrar': '0x096B3e5a85583fb01EFB53717e1B6862Cd28ba41',
+    'ERC721Datastore': '0x337EEc7a4156461f159CAb977f2627870AbB50c2',
   },
   568: {
     'DcNSRegistry': '0xD007B8EF92D6B17e8f7F6d0A4f774886670679C4',
