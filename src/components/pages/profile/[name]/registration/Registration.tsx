@@ -14,6 +14,7 @@ import Pricing from './steps/Pricing/Pricing'
 import Complete from './steps/Complete'
 import { usePrimary } from '@app/hooks/usePrimary'
 import { TransactionDialogManager } from '@app/components/@molecules/TransactionDialogManager/TransactionDialogManager'
+import { isLabelTooLong } from '@app/utils/utils'
 
 const ViewProfileContainer = styled.div(
   ({ theme }) => css`
@@ -51,9 +52,10 @@ export type RegistrationState = 'pricing' | 'complete'
 const Registration = ({ normalisedName, isLoading }: Props) => {
   const { t } = useTranslation('register')
 
+  const labelTooLong = isLabelTooLong(normalisedName)
   const router = useRouterWithHistory()
   const { address } = useAccount()
-  const { name: primaryName } = usePrimary(address!)
+  const { name: primaryName, loading: primaryLoading } = usePrimary(address!)
   const [years, setYears] = useState(1)
   const [isDialogShown, setDialogShown] = useState(false)
   const [state, setState] = useState<RegistrationState>('pricing')
@@ -79,7 +81,8 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
         noTitle
         title={normalisedName}
         subtitle={t('subtitle')}
-        loading={false}
+        hideHeading={state == 'complete'}
+        loading={labelTooLong ? false : isLoading || primaryLoading}
         singleColumnContent
         inlineHeading
       >
