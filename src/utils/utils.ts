@@ -84,6 +84,7 @@ export const checkETH2LDName = (isDotETH: boolean, labels: string[], canBeShort?
 export const checkSubname = (name: string) => name.split('.').length > 2
 
 export const isLabelTooLong = (label: string) => {
+  if (label === undefined) return false;
   const bytes = toUtf8Bytes(label)
   return bytes.byteLength > 255
 }

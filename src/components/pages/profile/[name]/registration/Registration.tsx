@@ -42,7 +42,7 @@ const ViewProfileContainer = styled.div(
   `,
 )
 
-type Props = {
+export type Props = {
   normalisedName: string
   isLoading: boolean
 }
