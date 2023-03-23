@@ -9,6 +9,11 @@ import { useAvailable } from '@app/hooks/useAvailable'
 
 export default function Page() {
   const router = useRouterWithHistory()
+  const isReady = router.isReady
+  
+  if (!isReady) {
+    return <Registration normalisedName='' isLoading={true} />
+  }
   const normalisedName = router.query.name as string
 
   const initial = useInitial()
