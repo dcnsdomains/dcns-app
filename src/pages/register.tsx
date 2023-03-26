@@ -24,7 +24,7 @@ export default function Page() {
 
   const isLoading = accountLoading || initial
 
-  if (available != true) {
+  if (available == false) {
     router.push(`/profile/${normalisedName}`)
   }
 
