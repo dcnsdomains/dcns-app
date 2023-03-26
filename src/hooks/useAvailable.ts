@@ -6,7 +6,7 @@ import { useProvider } from './useProvider'
 export const useAvailable = (normalisedName: string) => {
   if (!normalisedName) {
     return {
-      available: false,
+      available: true,
       isLoading: false,
     }
   }
