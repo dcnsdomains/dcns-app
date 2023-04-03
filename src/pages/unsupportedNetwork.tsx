@@ -47,7 +47,7 @@ export default function Page() {
   }, [currentChain?.id])
 
   const handleChangeNetwork = () => {
-    switchNetwork?.(568)
+    switchNetwork?.(2000)
   }
 
   return (
