@@ -5,6 +5,7 @@ import { useAccount } from 'wagmi'
 
 export default function Page() {
   const { address } = useAccount()
+  console.log('address', address)
   const { names } = useNames(address as string)
   console.log('names', names)
 
