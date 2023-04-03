@@ -20,6 +20,10 @@ const nextConfig = {
         source: '/:name',
         destination: '/profile?name=:name',
       },
+      {
+        source: '/names/:address',
+        destination: '/my/names?address=:address',
+      },
     ]
   },
   webpack: (config, options) => {
