@@ -249,7 +249,7 @@ const NameResultItem = ({ name }: { name: string }) => {
         </TextWrapper>
       </LeadingSearchItem>
       <SpinnerWrapper>
-        <Spinner color="accent" />
+        {/* <Spinner color="accent" /> */}
       </SpinnerWrapper>
     </>
   )
