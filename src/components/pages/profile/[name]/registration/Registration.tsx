@@ -67,6 +67,10 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
   const handleBack = () => {
     setDialogShown(false)
   }
+  const handleComplete = () => {
+    setDialogShown(false)
+    setState('complete')    
+  }
 
   const onComplete = (toProfile: boolean) => {
     router.push(toProfile ? `/profile/${normalisedName}` : '/')
@@ -122,6 +126,7 @@ const Registration = ({ normalisedName, isLoading }: Props) => {
         years={years}
         open={isDialogShown}
         back={handleBack}
+        complete={handleComplete}
       />
     </>
   )

@@ -9,6 +9,7 @@ export type Props = {
   years: number
   open: boolean
   back: () => void
+  complete: () => void
 }
 
 export const TransactionDialogManager = ({
@@ -16,6 +17,7 @@ export const TransactionDialogManager = ({
   years,
   open,
   back,
+  complete,
 }: Props) => {
   const { t } = useTranslation()
 
@@ -28,7 +30,7 @@ export const TransactionDialogManager = ({
       <TransactionStageModal
         normalizeName={normalizeName}
         years={years}
-        back={back}
+        complete={complete}
       />
     )
   }, [onDismiss, t])
