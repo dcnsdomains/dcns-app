@@ -13,7 +13,7 @@ export const useProvider = () => {
       chainId: 568,
     }
   } else {
-    RPC_URL = 'https://rpc.ankr.com/dogechain'
+    RPC_URL = 'https://rpc.dogechain.dog'
     NETWORKISH = {
       name: 'dogechain',
       chainId: 2000,

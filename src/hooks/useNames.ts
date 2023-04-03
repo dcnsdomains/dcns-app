@@ -14,12 +14,10 @@ export const useNames = (address: string) => {
   const token = getNamedRegistrarContract(contractAddr, provider)
 
   // ホルダーの過去のtokenIdの送信イベントログすべて取得する。
-  const {
-    data: sentLogs,
-  } = useQuery(['sentLogs', address], () => token.queryFilter(token.filters.Transfer(address, null, null)))
+  const { data: sentLogs } = useQuery(['sentLogs', address], () => token.queryFilter(token.filters.Transfer(address, null)))
 
   // ホルダーの過去のtokenIdの受信イベントログすべて取得する。
-  const { data: receivedLogs } = useQuery(['receivedLogsa', address], () => token.queryFilter(token.filters.Transfer(null, address, null)))
+  const { data: receivedLogs } = useQuery(['receivedLogsa', address], () => token.queryFilter(token.filters.Transfer(null, address)))
 
   // ログを結合し、EventLogを時間が古いものから順に時系列で並べる。
   const logs = sentLogs?.concat(receivedLogs ?? []).sort((a, b) => a.blockNumber - b.blockNumber || a.transactionIndex - b.transactionIndex) ?? []
