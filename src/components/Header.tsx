@@ -233,7 +233,7 @@ export const Header = () => {
             ref={routeContainerRef}
             $state={breakpoints.lg ? 'entered' : state}
           >
-            {RouteItems}
+            {/* {RouteItems} */}
           </RouteContainer>
         </RouteWrapper>
         <HeaderConnect />
