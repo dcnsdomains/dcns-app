@@ -23,13 +23,13 @@ const MessageTypography = styled(Typography)(
 export type Props = {
   normalizeName: string
   years: number
-  back: () => void
+  complete: () => void
 }
 
 export const TransactionStageModal = ({
   normalizeName,
   years,
-  back,
+  complete,
 }: Props) => {
   const { t } = useTranslation()
   const { address } = useAccountSafely()
@@ -55,7 +55,7 @@ export const TransactionStageModal = ({
     if (!!recentTransaction?.hash) {
       return (
         <Button
-          onClick={back}
+          onClick={complete}
           colorStyle='accentSecondary'
         >
           {t('action.close')}
