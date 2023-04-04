@@ -7,26 +7,8 @@ import { mq } from '@ensdomains/thorin'
 import { useActiveRoute } from '@app/hooks/useActiveRoute'
 import { getRoute } from '@app/routes'
 
-import BaseLink from './@atoms/BaseLink'
 import { RouteItem } from './@atoms/RouteItem/RouteItem'
 import { ConnectButton } from './ConnectButton'
-
-const AvatarWrapper = styled.div<{ $active: boolean }>(
-  ({ theme, $active }) => css`
-    position: relative;
-    overflow: hidden;
-    width: ${theme.space['10']};
-    height: ${theme.space['10']};
-    border: 2px solid ${$active ? theme.colors.accent : 'rgba(196, 196, 196, 1)'};
-    background-color: ${$active ? theme.colors.accent : 'rgba(196, 196, 196, 1)'};
-    border-radius: ${theme.radii.full};
-
-    img {
-      width: calc(${theme.space['10']} - 2px);
-      height: calc(${theme.space['10']} - 2px);
-    }
-  `,
-)
 
 const TabWrapper = styled.div(
   ({ theme }) => css`
@@ -87,7 +69,7 @@ export const TabBar = () => {
         <TabContainer>
           <TabItems>
             <RouteItem route={getRoute('search')} />
-            {address && (
+            {/* {address && (
               <>
                 <RouteItem route={getRoute('names')} />
                 <TabBarProfile address={address} isActive={activeRoute === 'profile'} />
@@ -96,7 +78,7 @@ export const TabBar = () => {
                   route={getRoute('settings')}
                 />
               </>
-            )}
+            )} */}
           </TabItems>
           {!address && <ConnectButton isTabBar />}
         </TabContainer>

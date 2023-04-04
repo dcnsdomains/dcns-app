@@ -7,7 +7,7 @@ import { SearchInput } from '@app/components/@molecules/SearchInput/SearchInput'
 import { LanugageDropdown } from '@app/components/LanguageDropdown'
 import { LeadingHeading } from '@app/components/LeadingHeading'
 
-import ENSWithGradient from '../assets/ENSWithGradient.svg'
+import ENSWithGradient from '../assets/DcNS.svg'
 
 const GradientTitle = styled.h1(
   ({ theme }) => css`
