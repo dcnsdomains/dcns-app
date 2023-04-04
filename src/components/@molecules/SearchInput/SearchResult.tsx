@@ -231,7 +231,7 @@ const PlaceholderResultItem = ({ input }: { input: string }) => {
         </TextWrapper>
       </LeadingSearchItem>
       <SpinnerWrapper>
-        <Spinner color="accent" />
+        {/* <Spinner color="accent" /> */}
       </SpinnerWrapper>
     </>
   )
@@ -303,7 +303,7 @@ export const SearchResult = ({
     if (type === 'name' || type === 'nameWithDotEth') {
       const labels = input.split('.')
       const isDotETH = labels.length === 2 && labels[1] === 'dc'
-      if (isDotETH && labels[0].length < 3) {
+      if (isDotETH && labels[0].length < 1) {
         return false
       }
     }
